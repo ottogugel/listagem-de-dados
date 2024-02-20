@@ -13,6 +13,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React Router Dom](https://reactrouter.com/en/main)
 - [Radix Ui Select](https://www.radix-ui.com/primitives/docs/components/select)
 - [Lucide React](https://lucide.dev/)
+- [JSON Server]()
 
 ## :computer: Projeto
 

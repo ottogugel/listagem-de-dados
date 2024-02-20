@@ -4,6 +4,7 @@ import { Tabs } from './components/tabs';
 import { Button } from './components/ui/button';
 import { Control, Input } from './components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './components/ui/table';
+import { Pagination } from './components/pagination';
 
 export function App() {
   return (
@@ -66,6 +67,8 @@ export function App() {
             })}
           </TableBody>
         </Table>
+
+        <Pagination />
       </main>
     </div>
   );

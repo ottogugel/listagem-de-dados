@@ -38,8 +38,14 @@ colocar isso no tailwind.config.js
       }
 
 instalar npm i lucide-react (biblioteca de icons)
-
-
 instalar tailwind-variants tailwind-merge (devido ao ui)
 instalar @radix-ui/react-select (devido ao ui)
 instalar npm i react-router-dom
+
+criar uma api (server.json) e preencher com title e amountOfVideos
+instalar npm i json-server -D
+
+criar um script no package.json chamado server e preencher json-server server.json --watch --port 3333
+
+--watch para observar
+-- port para passar a porta

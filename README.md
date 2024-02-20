@@ -14,6 +14,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Radix Ui Select](https://www.radix-ui.com/primitives/docs/components/select)
 - [Lucide React](https://lucide.dev/)
 - [JSON Server]()
+- [TanStack React Query]()
 
 ## :computer: Projeto
 

@@ -42,10 +42,41 @@ instalar tailwind-variants tailwind-merge (devido ao ui)
 instalar @radix-ui/react-select (devido ao ui)
 instalar npm i react-router-dom
 
+
+            {/* CRIAR UM ARRAY APARTIR DE UMA LENGTH ESPECIFICADA */}
+            {Array.from({ length: 10 }).map((value, index) => {
+              return (
+                <TableRow key={index}>
+                  <TableCell></TableCell>
+                  <TableCell>
+                    <div className="flex flex-col gap-0.5">
+                      <span className="font-medium">React</span>
+                      <span className="text-xs text-zinc-500">
+                        9E0E95BF-4BF6-4A23-B79E-F71AE9C9C1117
+                      </span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-zinc-500">13 video(s)</TableCell>
+                  <TableCell className="text-right">
+                    <Button size="icon">
+                      <MoreHorizontal className="size-4" />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+
+
+
 criar uma api (server.json) e preencher com title e amountOfVideos
 instalar npm i json-server -D
 
 criar um script no package.json chamado server e preencher json-server server.json --watch --port 3333
 
+// JSON server é um package do node.js que ajuda simular uma API / server
+
 --watch para observar
 -- port para passar a porta
+
+instalar @tanstack/react-query
+// A lib tem como objetivo lidar melhor com as requisições, cache, etc;

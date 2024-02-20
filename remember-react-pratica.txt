@@ -1,0 +1,45 @@
+# Passos para a criação do projeto
+npm create vite@latest
+nome do projeto
+code .
+npm install
+
+# Instalando tailwindcss
+npm i tailwindcss postcss autoprefixer -D
+npx tailwindcss init -p
+após isso ir no taiwlind.config.js e colar
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './src/**/*.tsx',
+    './index.html'
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+no arquivo index.css jogar isso
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+utilizar a fonte inter do google fonts
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+colocar isso no tailwind.config.js
+      fontFamily: {
+        sans: 'Inter, sans-serif'
+      }
+
+instalar npm i lucide-react (biblioteca de icons)
+
+
+instalar tailwind-variants tailwind-merge (devido ao ui)
+instalar @radix-ui/react-select (devido ao ui)
+instalar npm i react-router-dom

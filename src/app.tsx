@@ -1,11 +1,15 @@
-import { FileDown, MoreHorizontal, Plus, Search } from 'lucide-react'
+import { FileDown, Filter, MoreHorizontal, Plus, Search } from 'lucide-react'
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
+
 import { Header } from './components/header';
 import { Tabs } from './components/tabs';
 import { Button } from './components/ui/button';
 import { Control, Input } from './components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './components/ui/table';
-import { useQuery } from '@tanstack/react-query';
 import { Pagination } from './components/pagination';
+
 
 // JSON -> Typescript
 export interface TagResponse {
@@ -26,24 +30,45 @@ export interface Tag {
 
 
 export function App() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlFilter = searchParams.get("filter") ?? "";
+
+  const [filter, setFilter] = useState(urlFilter);
+
+  // Converter a página em um número se não estarei na página 1.
+  const page = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
+
+
+  // Função que vai me devolver os dados da API. (Requisição GET)
   const { data: tagsResponse, isLoading } = useQuery<TagResponse>({
-    queryKey: ["get-tags"], // Buscar Tags
+    queryKey: ["get-tags", urlFilter, page], // Buscar Tags
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:3333/tags?_page=1&_per_page=10"
+        `http://localhost:3333/tags?_page=${page}&_per_page=10&title=${urlFilter}`
       );
       const data = await response.json();
 
-      console.log(data);
+      // delay 2s
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       return data;
-    }, // Função que vai me devolver os dados da API. (Requisição GET)
+    },
+    // Não vai ficar recarregando a tela ao voltar de pagina.
+    placeholderData: keepPreviousData,
   });
 
-  if(isLoading) {
-    return null
+  function handleFilter() {
+    setSearchParams(params => {
+      params.set('page', '1')
+      params.set('filter', filter)
+
+      return params;
+    })
   }
 
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <div className="py-10 space-y-8">
@@ -61,10 +86,20 @@ export function App() {
         </div>
 
         <div className="flex items-center justify-between">
-          <Input variant="filter">
-            <Search className="size-3" />
-            <Control placeholder="Search tags..." />
-          </Input>
+          <div className="flex items-center">
+            <Input variant="filter">
+              <Search className="size-3" />
+              <Control
+                placeholder="Search tags..."
+                onChange={(e) => setFilter(e.target.value)}
+                value={filter}
+              />
+            </Input>
+            <Button onClick={handleFilter}>
+              <Filter className="size-3" />
+              Filter
+            </Button>
+          </div>
 
           <Button>
             <FileDown className="size-3" />
@@ -106,7 +141,13 @@ export function App() {
           </TableBody>
         </Table>
 
-        {tagsResponse && <Pagination pages={tagsResponse.pages} items={tagsResponse.items} page={1} />}
+        {tagsResponse && (
+          <Pagination
+            pages={tagsResponse.pages}
+            items={tagsResponse.items}
+            page={page}
+          />
+        )}
       </main>
     </div>
   );

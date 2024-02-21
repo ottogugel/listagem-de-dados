@@ -40,7 +40,6 @@ colocar isso no tailwind.config.js
 instalar npm i lucide-react (biblioteca de icons)
 instalar tailwind-variants tailwind-merge (devido ao ui)
 instalar @radix-ui/react-select (devido ao ui)
-instalar npm i react-router-dom
 
 
             {/* CRIAR UM ARRAY APARTIR DE UMA LENGTH ESPECIFICADA */}
@@ -80,3 +79,25 @@ criar um script no package.json chamado server e preencher json-server server.js
 
 instalar @tanstack/react-query
 // A lib tem como objetivo lidar melhor com as requisições, cache, etc;
+
+instalar npm react-router-dom
+no main.tsx fazer uma const const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+]);
+e trocar o <App /> por <RouterProvider /> passanda propriedade router={router}
+
+no pagination usar useSearchParams
+
+como fazer um delay
+await new Promise(resolve => setTimeout(resolve, 2000)) // delay 2s
+
+staleTime: 1000 * 60, // obsoleto
+
+// Refetch on Focus - Recarrega as informações na tela.
+
+instalar npm i json-server@0.17.4 -D
+
+//  const debouncedFilter = useDebounceValue(filter, 1000);

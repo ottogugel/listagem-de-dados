@@ -101,3 +101,7 @@ staleTime: 1000 * 60, // obsoleto
 instalar npm i json-server@0.17.4 -D
 
 //  const debouncedFilter = useDebounceValue(filter, 1000);
+
+instalar npm i @radix-ui/react-dialog
+
+inset-0 (bot, top, left, right = 0)

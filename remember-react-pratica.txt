@@ -105,3 +105,23 @@ instalar npm i json-server@0.17.4 -D
 instalar npm i @radix-ui/react-dialog
 
 inset-0 (bot, top, left, right = 0)
+
+// trabalhar para formulario
+npm i react-hook-form
+// trabalhar com validação
+npm i zod
+// integração entre as duas bibliotecas acima
+npm i @hookform/resolvers
+
+# usar o react hook form
+
+cria a const {register, handleSubmit} passando useForm
+
+criar uma function tag() {
+
+}
+
+usar no form onSubmit={handleSubmit(passando o parametro sendo uma função)}
+e nas demais tags {...register('variavel que você criou')}
+
+46:40 aula

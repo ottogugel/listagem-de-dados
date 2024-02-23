@@ -17,6 +17,7 @@ import {
   TableRow,
 } from "./components/ui/table";
 import { Pagination } from "./components/pagination";
+import { CreateTagForm } from "./components/ui/create-tag-form";
 
 // JSON -> Typescript
 export interface TagResponse {
@@ -31,6 +32,7 @@ export interface TagResponse {
 
 export interface Tag {
   title: string;
+  slug: string;
   amountOfVideos: number;
   id: string;
 }
@@ -96,7 +98,7 @@ export function App() {
             <Dialog.Portal>
               {/* Div preta que fica no conteudo */}
               <Dialog.Overlay className="fixed inset-0 bg-black/70" />
-              <Dialog.Content className="space-y-10 fixed right-0 top-0 bottom-0 h-screen min-w-[320px] z-10 bg-zinc-900">
+              <Dialog.Content className="space-y-10 fixed p-10 right-0 top-0 bottom-0 h-screen min-w-[320px] z-10 bg-zinc-900">
                 <div className="space-y-3">
                   <Dialog.Title className="text-xl font-bold">
                     Create Tag
@@ -105,6 +107,7 @@ export function App() {
                     Tags can be used to group videos about similar concepts.
                   </Dialog.Description>
                 </div>
+                <CreateTagForm />
                 <Dialog.Close />
               </Dialog.Content>
             </Dialog.Portal>
@@ -150,7 +153,7 @@ export function App() {
                   <TableCell>
                     <div className="flex flex-col gap-0.5">
                       <span className="font-medium">{tag.title}</span>
-                      <span className="text-xs text-zinc-500">{tag.id}</span>
+                      <span className="text-xs text-zinc-500">{tag.slug}</span>
                     </div>
                   </TableCell>
                   <TableCell className="text-zinc-500">

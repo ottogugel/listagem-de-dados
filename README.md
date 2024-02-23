@@ -15,6 +15,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Lucide React](https://lucide.dev/)
 - [JSON Server]()
 - [TanStack React Query]()
+- [React Hook Form]()
+- [ZOD]()
+- [HookForm/Resolvers]()
 
 ## :computer: Projeto
 

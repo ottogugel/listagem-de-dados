@@ -29,11 +29,17 @@ export function CreateTagForm() {
       resolver: zodResolver(createTagSchema),
     });
 
-    function createTag(data: CreateTagSchema) {
-      console.log(data);
+    async function createTag({ name, slug }: CreateTagSchema) {
+      await fetch('http://localhost:3333/tags', {
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        slug,
+        }),
+      })
     }
 
-    const slug = getSlugFromString(watch("name")) // o valor do slug vai observar a variavel name mudar e atribuir a essa variavel.
+    const generatedSlug = watch("name") ? getSlugFromString(watch("name")) : ""; // o valor do slug vai observar a variavel name mudar e atribuir a essa variavel.
 
 
   return (
@@ -58,7 +64,7 @@ export function CreateTagForm() {
           id="slug"
           type="text"
           readOnly
-          value={slug}
+          value={generatedSlug}
           className="border border-zinc-800 px-3 py-2.5 rounded-lg bg-zinc-800/50 w-full text-sm"
         />
       </div>

@@ -6,8 +6,7 @@ import { Button } from "./button";
 import * as Dialog from '@radix-ui/react-dialog'
 
 const createTagSchema = z.object({
-  name: z.string().min(3, {message: "Minimum 3 Characters"}),
-  slug: z.string(),
+  title: z.string().min(3, {message: "Minimum 3 Characters"}),
 })
 
 type CreateTagSchema = z.infer<typeof createTagSchema>;
@@ -23,33 +22,33 @@ function getSlugFromString(input: string): string {
 }
 
 export function CreateTagForm() {
+  // React Hook Form + Zod + ZodResolver
+  const { register, handleSubmit, watch } = useForm<CreateTagSchema>({
+    resolver: zodResolver(createTagSchema),
+  });
 
-   // React Hook Form + Zod + ZodResolver
-    const { register, handleSubmit, watch } = useForm<CreateTagSchema>({
-      resolver: zodResolver(createTagSchema),
-    });
+  // o valor do slug vai observar a variavel name mudar e atribuir a essa variavel.
+  const slug = watch("title") ? getSlugFromString(watch("title")) : "";
 
-    async function createTag({ name, slug }: CreateTagSchema) {
-      await fetch('http://localhost:3333/tags', {
-      method: 'POST',
+  async function createTag({ title }: CreateTagSchema) {
+    await fetch("http://localhost:3333/tags", {
+      method: "POST",
       body: JSON.stringify({
-        name,
+        title,
         slug,
-        }),
-      })
-    }
-
-    const generatedSlug = watch("name") ? getSlugFromString(watch("name")) : ""; // o valor do slug vai observar a variavel name mudar e atribuir a essa variavel.
-
+        amountOfVideos: 0,
+      }),
+    });
+  }
 
   return (
     <form className="w-full space-y-6" onSubmit={handleSubmit(createTag)}>
       <div className="space-y-2">
-        <label className="text-sm font-medium block" htmlFor="name">
+        <label className="text-sm font-medium block" htmlFor="title">
           Tag Name
         </label>
         <input
-          {...register("name")}
+          {...register("title")}
           id="name"
           type="text"
           className="border border-zinc-800 px-3 py-2.5 rounded-lg bg-zinc-800/50 w-full text-sm"
@@ -60,11 +59,10 @@ export function CreateTagForm() {
           Slug
         </label>
         <input
-          {...register("slug")}
           id="slug"
           type="text"
           readOnly
-          value={generatedSlug}
+          value={slug}
           className="border border-zinc-800 px-3 py-2.5 rounded-lg bg-zinc-800/50 w-full text-sm"
         />
       </div>

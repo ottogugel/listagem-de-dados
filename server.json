@@ -1214,9 +1214,16 @@
       "slug": ""
     },
     {
-      "id": "13d4",
-      "name": "React Hook Form123213",
-      "slug": ""
+      "id": "7bbc",
+      "name": "Tag do Sladost",
+      "slug": "",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "3a2b",
+      "title": "Tag do Sladost 2",
+      "slug": "tag-do-sladost-2",
+      "amountOfVideos": 0
     }
   ]
 }

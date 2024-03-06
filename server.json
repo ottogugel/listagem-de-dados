@@ -1224,6 +1224,36 @@
       "title": "Tag do Sladost 2",
       "slug": "tag-do-sladost-2",
       "amountOfVideos": 0
+    },
+    {
+      "id": "0588",
+      "title": "teste-do-sonner",
+      "slug": "testedosonner",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "92d5",
+      "title": "teste1",
+      "slug": "teste1",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "ffb3",
+      "title": "teste123",
+      "slug": "teste123",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "01a8",
+      "title": "teste-do-mutation",
+      "slug": "testedomutation",
+      "amountOfVideos": 0
+    },
+    {
+      "id": "4022",
+      "title": "deve-aparecer-na-lista-sozinho",
+      "slug": "deveaparecernalistasozinho",
+      "amountOfVideos": 0
     }
   ]
 }

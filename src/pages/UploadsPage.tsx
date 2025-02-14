@@ -1,8 +1,7 @@
-import { FileDown, Filter, MoreHorizontal, Plus, Search } from "lucide-react";
+import { FileDown, Filter, MoreHorizontal, Search } from "lucide-react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
 
 import { Header } from "../components/header";
 import { Tabs } from "../components/tabs";
@@ -18,7 +17,6 @@ import {
 } from "../components/ui/table";
 import { Pagination } from "../components/pagination";
 import { Spinner } from "../components/ui/spinner"; // Importe o Spinner
-import { CreateTagForm } from "../components/ui/create-tag-form";
 
 // JSON -> Typescript
 export interface TagResponse {
@@ -34,10 +32,11 @@ export interface TagResponse {
 export interface Tag {
   title: string;
   slug: string;
+  amountOfVideos: number;
   id: string;
 }
 
-export function TagsPage() {
+export function UploadPages() {
   const [searchParams, setSearchParams] = useSearchParams();
   const urlFilter = searchParams.get("filter") ?? "";
 
@@ -84,41 +83,12 @@ export function TagsPage() {
         <Tabs />
       </div>
       <main className="max-w-6xl mx-auto space-y-5">
-        <div className="flex items-center gap-3 ml-2 mt-4">
-          <h1 className="text-xl font-bold">Tags</h1>
-          <Dialog.Root>
-            <Dialog.Trigger asChild>
-              <Button variant="primary">
-                <Plus className="size-3" />
-                Create new
-              </Button>
-            </Dialog.Trigger>
-
-            {/*  Acessibilidade para o modal. */}
-            <Dialog.Portal>
-              {/* Div preta que fica no conteudo */}
-              <Dialog.Overlay className="fixed inset-0 bg-black/70" />
-              <Dialog.Content className="space-y-10 fixed p-10 right-0 top-0 bottom-0 h-screen min-w-[320px] z-10 bg-zinc-900">
-                <div className="space-y-3">
-                  <Dialog.Title className="text-xl font-bold">
-                    Create Tag
-                  </Dialog.Title>
-                  <Dialog.Description className="text-sm text-zinc-500">
-                    Tags can be used to group videos about similar concepts.
-                  </Dialog.Description>
-                </div>
-                <CreateTagForm />
-                <Dialog.Close />
-              </Dialog.Content>
-            </Dialog.Portal>
-          </Dialog.Root>
-        </div>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Input variant="filter">
               <Search className="size-3" />
               <Control
-                placeholder="Search Tags..."
+                placeholder="Search uploads..."
                 onChange={(e) => setFilter(e.target.value)}
                 value={filter}
               />
@@ -140,6 +110,7 @@ export function TagsPage() {
             <TableRow>
               <TableHead>ID</TableHead>
               <TableHead>Tag</TableHead>
+              <TableHead>Amount of videos</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -155,6 +126,9 @@ export function TagsPage() {
                       <span className="font-medium">{tag.title}</span>
                       <span className="text-xs text-zinc-500">{tag.slug}</span>
                     </div>
+                  </TableCell>
+                  <TableCell className="text-zinc-500">
+                    {tag.amountOfVideos}
                   </TableCell>
                   <TableCell className="text-right">
                     <Button size="icon">

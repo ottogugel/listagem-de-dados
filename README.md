@@ -1,5 +1,3 @@
-Texto que vai informar o que significa esse projeto...
-
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -13,11 +11,12 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React Router Dom](https://reactrouter.com/en/main)
 - [Radix Ui Select](https://www.radix-ui.com/primitives/docs/components/select)
 - [Lucide React](https://lucide.dev/)
-- [JSON Server]()
-- [TanStack React Query]()
-- [React Hook Form]()
-- [ZOD]()
-- [HookForm/Resolvers]()
+- [JSON Server](https://github.com/typicode/json-server)
+- [TanStack React Query](https://tanstack.com/query/latest)
+- [React Hook Form](https://react-hook-form.com/)
+- [ZOD](https://zod.dev/)
+- [HookForm/Resolvers](https://www.npmjs.com/package/@hookform/resolvers)
+- [Sonner](https://sonner.emilkowal.ski/)
 
 ## :computer: Projeto
 

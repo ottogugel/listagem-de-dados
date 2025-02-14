@@ -8,14 +8,19 @@ import "./index.css";
 import { App } from "./app";
 import { TagsPage } from "./pages/TagsPage";
 import { SettingsPage } from "./pages/SettingsPage";
+import { UploadPages } from "./pages/UploadsPage";
 
 const queryClient = new QueryClient();
 
 // Configuração das rotas
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <App />, // Página inicial (se necessário)
+  },
+  {
+    path: "/uploads",
+    element: <UploadPages />, // Página de Uploads
   },
   {
     path: "/tags",

@@ -15,7 +15,7 @@ const queryClient = new QueryClient();
 // Configuração das rotas
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <App />, // Página inicial (se necessário)
   },
   {

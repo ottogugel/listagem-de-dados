@@ -5,7 +5,7 @@ import nivoLogo from "../assets/logo-nivo.svg";
 
 const wallpaperImage = 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
 
-export default function Login() {
+export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuthStore();
@@ -88,9 +88,7 @@ export default function Login() {
             <p className="text-gray-600">Não tem uma conta?</p>
             <button 
               onClick={() => {
-                // Simulação de cadastro rápido
-                login();
-                navigate('/');
+                navigate('/signup');
               }}
               className="text-blue-600 font-medium hover:underline mt-2"
             >

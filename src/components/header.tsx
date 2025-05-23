@@ -1,6 +1,5 @@
 import { ChevronDown, LogOut } from "lucide-react";
 import nivoLogo from "../assets/logo-nivo.svg";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -68,28 +67,12 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-3">
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger>
-            <Button>
-              <div className="flex flex-col items-end gap-0.5">
-                <span className="text-sm font-medium">Gugel Group</span>
-              </div>
-              <ChevronDown className="text-zinc-600 size-4" />
-            </Button>
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Content>
-            <DropdownMenu.Item className="p-2 bg-dark outline-none rounded-sm w-56 flex flex-col gap-1">
-              <span className="text-sm font-medium">Otto Gugel</span>
-              <span className="text-xs text-zinc-400">otto@nivo.com</span>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item className="border border-b" />
-            <DropdownMenu.Item className="rounded-sm p-5 w-56">
-              <span className="text-sm flex flex-row gap-1">
-                <LogOut className="size-4" /> Logout
-              </span>
-            </DropdownMenu.Item>
-          </DropdownMenu.Content>
-        </DropdownMenu.Root>
+          <Button>
+            Otto Gugel
+          </Button>
+          <Button>
+            Sign Out
+          </Button>
       </div>
     </div>
   );

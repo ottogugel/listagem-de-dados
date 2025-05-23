@@ -35,6 +35,7 @@ export interface Tag {
   title: string;
   slug: string;
   id: string;
+  amountOfVideos: number;
 }
 
 export function TagsPage() {
@@ -138,8 +139,9 @@ export function TagsPage() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>ID</TableHead>
-              <TableHead>Tag</TableHead>
+              <TableHead className="w-[40%]">Tag</TableHead>
+              <TableHead>Amount of videos</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -147,19 +149,12 @@ export function TagsPage() {
             {tagsResponse?.data.map((tag) => {
               return (
                 <TableRow key={tag.id}>
-                  <TableCell>
-                    <span className="text-xs">{tag.id}</span>
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex flex-col gap-0.5">
-                      <span className="font-medium">{tag.title}</span>
-                      <span className="text-xs text-zinc-500">{tag.slug}</span>
-                    </div>
-                  </TableCell>
+                  <TableCell>{tag.title}</TableCell>
+                  <TableCell>{tag.amountOfVideos}</TableCell>
                   <TableCell className="text-right">
-                    <Button size="icon">
-                      <MoreHorizontal className="size-4" />
-                    </Button>
+                  <Button size="icon">
+                    <MoreHorizontal className="size-4" />
+                  </Button>
                   </TableCell>
                 </TableRow>
               );
